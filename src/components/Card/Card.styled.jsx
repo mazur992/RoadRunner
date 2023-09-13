@@ -6,7 +6,7 @@ export const CardStyle = styled.div`
 
   & .cardImg {
     min-height: 268px;
-    min-width: 274px;
+    // min-width: 274px;
     margin-bottom: 14px;
 
     background-color: blue;
@@ -14,9 +14,7 @@ export const CardStyle = styled.div`
   }
   & .cardModel {
     color: #121417;
-    font-family: Manrope;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 24px; /* 150% */
   }
@@ -28,9 +26,7 @@ export const CardStyle = styled.div`
   }
   & .cardDescription {
     color: rgba(18, 20, 23, 0.5);
-    font-family: Manrope;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
     line-height: 18px; /* 150% */
   }
