@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardStyle } from './Card.styled';
 
-export default function Card() {
+export default function Card({ children }) {
   return (
     <CardStyle>
       <img className="cardImg" src={`http:/`} alt="icon-card" />
@@ -19,7 +19,14 @@ export default function Card() {
         </div>
         <span className="cardModel">$40</span>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '4px',
+          marginBottom: '28px',
+        }}
+      >
         <span className="cardDescription">Kiev</span>
         <span className="cardDescription">Ukraine</span>
         <span className="cardDescription">Luxury Car Rentals</span>
@@ -29,6 +36,7 @@ export default function Card() {
         <span className="cardDescription">9582</span>
         <span className="cardDescription">Power liftgate</span>
       </div>
+      {children}
     </CardStyle>
   );
 }

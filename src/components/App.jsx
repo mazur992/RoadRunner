@@ -1,3 +1,4 @@
+import ButtonLearnMore from './ButtonLearnMore/ButtonLearnMore';
 import Card from './Card/Card';
 
 export const App = () => {
@@ -12,7 +13,9 @@ export const App = () => {
     //   color: '#010101',
     // }}
     >
-      <Card />
+      <Card>
+        <ButtonLearnMore />
+      </Card>
     </div>
   );
 };

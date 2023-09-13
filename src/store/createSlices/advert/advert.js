@@ -5,10 +5,9 @@ import {
   deleteAdvert,
   getAdvertById,
 } from 'store/AsyncThunk/asyncThunkAdvert';
-import { advertList } from './advertList';
 
 const initialState = {
-  adverts: [...advertList],
+  adverts: [],
   loading: false,
   error: null,
 };
