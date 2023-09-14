@@ -8,6 +8,7 @@ export const ModalStyle = styled.div`
   width: 541px;
   padding: 40px;
   border-radius: 24px;
+  text-align: left;
 
   background: #fff;
   max-height: calc(100vh - 85px);

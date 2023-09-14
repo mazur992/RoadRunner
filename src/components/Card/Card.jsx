@@ -8,7 +8,14 @@ export default function Card({ setIsShowModal, setIdCard }) {
   const adverts = useSelector(selectAdvert);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '29px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '29px',
+        marginBottom: '100px',
+      }}
+    >
       {adverts.map(advert => {
         const address = advert.address.split(',');
         return (

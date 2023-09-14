@@ -25,7 +25,13 @@ const advertSlice = createSlice({
       })
       .addCase(getAllAdverts.fulfilled, (state, action) => {
         state.loading = false;
-        state.adverts = action.payload;
+        const existingIds = state.adverts.map(advert => advert.id);
+
+        const newAdverts = action.payload.filter(
+          advert => !existingIds.includes(advert.id)
+        );
+
+        state.adverts = [...state.adverts, ...newAdverts];
         state.error = null;
       })
       .addCase(getAllAdverts.rejected, (state, action) => {
