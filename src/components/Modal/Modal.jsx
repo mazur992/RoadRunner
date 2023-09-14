@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 import { ModalStyle } from './Modal.styled';
 import ButtonRentalCar from 'components/ButtonRentalCar/ButtonRentalCar';
-import { FiX, FiHeart } from 'react-icons/fi';
+import {
+  FiX,
+  // FiHeart
+} from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { selectAdvert } from 'store/createSlices/advert/advertSelectors';
 
-export default function Modal({ hideModal }) {
+export default function Modal({ hideModal, idCard }) {
+  const adverts = useSelector(selectAdvert);
+  const advert = adverts.find(item => item.id === idCard);
+  const address = advert.address.split(',');
+  const rentalConditions = advert.rentalConditions.split('\n');
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.key === 'Escape') {
@@ -16,14 +25,14 @@ export default function Modal({ hideModal }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [hideModal]);
   return (
     <ModalStyle>
-      <img className="modalImg" src={`http:/`} alt="icon-modal" />
+      <img className="modalImg" src={advert.img} alt={advert.make} />
       <div style={{ marginBottom: '8px' }}>
-        <span className="modalModel">Buick</span>
-        <span className="modalModel modalModelBlue">Enclave</span>
-        <span className="modalModel">, 2008</span>
+        <span className="modalModel">{advert.make}</span>
+        <span className="modalModel modalModelBlue">{advert.model}</span>
+        <span className="modalModel">{`, ${advert.year}`}</span>
       </div>
       <div
         style={{
@@ -34,28 +43,25 @@ export default function Modal({ hideModal }) {
           marginBottom: '14px',
         }}
       >
-        <span className="modalDescription">Kiev</span>
-        <span className="modalDescription">Ukraine</span>
+        <span className="modalDescription">{address[1]}</span>
+        <span className="modalDescription">{address[2]}</span>
         <span className="modalDescription">
-          Id: <span>9582</span>
+          Id: <span>{advert.id}</span>
         </span>
         <span className="modalDescription">
-          Year: <span>2008</span>
+          Year: <span>{advert.year}</span>
         </span>
         <span className="modalDescription">
-          Type: <span>Suv</span>
+          Type: <span>{advert.type}</span>
         </span>
         <span className="modalDescription">
-          Fuel Consumption: <span>10.5</span>
+          Fuel Consumption: <span>{advert.fuelConsumption}</span>
         </span>
         <span className="modalDescription">
-          Engine Size: <span>3.6L V6</span>
+          Engine Size: <span>{advert.engineSize}</span>
         </span>
       </div>
-      <p className="additionalDescription">
-        The Buick Enclave is a stylish and spacious SUV known for its
-        comfortable ride and luxurious features.
-      </p>
+      <p className="additionalDescription">{advert.description}</p>
       <p className="modalTitle">Accessories and functionalities:</p>
       <div
         style={{
@@ -64,12 +70,12 @@ export default function Modal({ hideModal }) {
           marginBottom: '24px',
         }}
       >
-        <span className="modalDescription">Kiev</span>
-        <span className="modalDescription">Ukraine</span>
-        <span className="modalDescription">Luxury Car Rentals</span>
-        <span className="modalDescription">Premium</span>
-        <span className="modalDescription">Suv</span>
-        <span className="modalDescription">Enclave</span>
+        {advert.accessories.map(accessory => (
+          <span className="modalDescription">{accessory}</span>
+        ))}
+        {advert.functionalities.map(functionalities => (
+          <span className="modalDescription">{functionalities}</span>
+        ))}
       </div>
       <p className="modalTitle">Rental Conditions: </p>
       <div
@@ -81,15 +87,22 @@ export default function Modal({ hideModal }) {
         }}
       >
         <span className="rentalConditional">
-          Minimum age: <span className="rentalConditionalValue">25</span>
+          {`${rentalConditions[0].split(': ')[0]}: `}
+          <span className="rentalConditionalValue">
+            {rentalConditions[0].split(': ')[1]}
+          </span>
         </span>
-        <span className="rentalConditional">Valid driver’s license</span>
-        <span className="rentalConditional">Security deposite required </span>
+        {rentalConditions.slice(1).map(rentalCondition => (
+          <span className="rentalConditional">{rentalCondition}</span>
+        ))}
+
         <span className="rentalConditional">
-          Mileage: <span className="rentalConditionalValue">5,858</span>
+          Mileage:{' '}
+          <span className="rentalConditionalValue">{advert.mileage}</span>
         </span>
         <span className="rentalConditional">
-          Price: <span className="rentalConditionalValue">40$</span>
+          Price:{' '}
+          <span className="rentalConditionalValue">{advert.rentalPrice}</span>
         </span>
       </div>
       <ButtonRentalCar />

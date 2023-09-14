@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 
 export const CardStyle = styled.div`
-  width: 274px;
-  outline: 1px solid tomato;
+  width: calc((100% - 87px) / 4);
 
   & .cardImg {
     min-height: 268px;
-    // min-width: 274px;
     margin-bottom: 14px;
 
-    background-color: blue;
     border-radius: 12px;
   }
   & .cardModel {

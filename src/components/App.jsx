@@ -1,14 +1,6 @@
-import { useState } from 'react';
-import ButtonLearnMore from './ButtonLearnMore/ButtonLearnMore';
-import Card from './Card/Card';
-import Modal from './Modal/Modal';
-import BackDrop from './BackDrop/BackDrop';
+import Catalog from 'pages/Catalog/Catalog';
 
 export const App = () => {
-  const [isShowModal, setIsShowModal] = useState(false);
-  const hideModal = () => {
-    setIsShowModal(false);
-  };
   return (
     <div
     // style={{
@@ -20,15 +12,7 @@ export const App = () => {
     //   color: '#010101',
     // }}
     >
-      <Card>
-        <ButtonLearnMore setIsShowModal={setIsShowModal} />
-      </Card>
-
-      {isShowModal && (
-        <BackDrop hideModal={hideModal}>
-          <Modal hideModal={hideModal} />
-        </BackDrop>
-      )}
+      <Catalog />
     </div>
   );
 };

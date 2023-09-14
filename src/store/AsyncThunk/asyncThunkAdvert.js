@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const BASE_URL = 'https://648f0aa075a96b6644449db2.mockapi.io';
 
-const getAllAdverts = createAsyncThunk('advert/getAdverts', async () => {
+const getAllAdverts = createAsyncThunk('advert/getAdverts', async page => {
   try {
-    const response = await axios.get(`${BASE_URL}/adverts`);
+    const response = await axios.get(
+      `${BASE_URL}/adverts/?page=${page}&limit=8`
+    );
     const { data } = response;
     return data;
   } catch (error) {

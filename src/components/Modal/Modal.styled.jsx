@@ -17,7 +17,6 @@ export const ModalStyle = styled.div`
     min-height: 268px;
     margin-bottom: 14px;
 
-    background-color: blue;
     border-radius: 12px;
   }
   & .modalModel {

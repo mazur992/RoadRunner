@@ -1,42 +1,59 @@
 import React from 'react';
 import { CardStyle } from './Card.styled';
+import { useSelector } from 'react-redux';
+import { selectAdvert } from 'store/createSlices/advert/advertSelectors';
+import ButtonLearnMore from 'components/ButtonLearnMore/ButtonLearnMore';
 
-export default function Card({ children }) {
+export default function Card({ setIsShowModal, setIdCard }) {
+  const adverts = useSelector(selectAdvert);
+
   return (
-    <CardStyle>
-      <img className="cardImg" src={`http:/`} alt="icon-card" />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: '8px',
-        }}
-      >
-        <div>
-          <span className="cardModel">Buick</span>
-          <span className="cardModel cardModelBlue">Enclave</span>
-          <span className="cardModel">, 2008</span>
-        </div>
-        <span className="cardModel">$40</span>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '4px',
-          marginBottom: '28px',
-        }}
-      >
-        <span className="cardDescription">Kiev</span>
-        <span className="cardDescription">Ukraine</span>
-        <span className="cardDescription">Luxury Car Rentals</span>
-        <span className="cardDescription">Premium</span>
-        <span className="cardDescription">Suv</span>
-        <span className="cardDescription">Enclave</span>
-        <span className="cardDescription">9582</span>
-        <span className="cardDescription">Power liftgate</span>
-      </div>
-      {children}
-    </CardStyle>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '29px' }}>
+      {adverts.map(advert => {
+        const address = advert.address.split(',');
+        return (
+          <CardStyle key={advert.id}>
+            <img className="cardImg" src={advert.img} alt={advert.make} />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginBottom: '8px',
+              }}
+            >
+              <div>
+                <span className="cardModel">{advert.make}</span>
+                <span className="cardModel cardModelBlue">{advert.model}</span>
+                <span className="cardModel">{`, ${advert.year}`}</span>
+              </div>
+              <span className="cardModel">{advert.rentalPrice}</span>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '4px',
+                marginBottom: '28px',
+              }}
+            >
+              <span className="cardDescription">{address[1]}</span>
+              <span className="cardDescription">{address[2]}</span>
+              <span className="cardDescription">{advert.rentalCompany}</span>
+              <span className="cardDescription">{advert.type}</span>
+              <span className="cardDescription">{advert.model}</span>
+              <span className="cardDescription">{advert.mileage}</span>
+              <span className="cardDescription">
+                {advert.functionalities[0]}
+              </span>
+            </div>
+            <ButtonLearnMore
+              setIsShowModal={setIsShowModal}
+              setIdCard={setIdCard}
+              id={advert.id}
+            />
+          </CardStyle>
+        );
+      })}
+    </div>
   );
 }
