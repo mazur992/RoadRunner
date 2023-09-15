@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CardStyle } from './Card.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectAdvert,
-  selectAdvertsActive,
-} from 'store/createSlices/advert/advertSelectors';
+import { selectAdvertsActive } from 'store/createSlices/advert/advertSelectors';
 import ButtonLearnMore from 'components/ButtonLearnMore/ButtonLearnMore';
 import Icon from 'images/sprite.svg';
-import {
-  deleteAdvertsActive,
-  setAdvertsActive,
-} from 'store/createSlices/advert/advert';
+import { deleteAdvertsActive } from 'store/createSlices/advert/advert';
 
-export default function Card({ setIsShowModal, setIdCard, idCard }) {
-  const adverts = useSelector(selectAdvert);
+export default function FavoritCard({ setIsShowModal, setIdCard, idCard }) {
+  const advertsActive = useSelector(selectAdvertsActive);
 
   return (
     <div
@@ -24,14 +18,14 @@ export default function Card({ setIsShowModal, setIdCard, idCard }) {
         marginBottom: '100px',
       }}
     >
-      {adverts.map(advert => {
+      {advertsActive.map(advert => {
         const address = advert.address.split(',');
         return (
           <OneCard
             key={advert.id}
             setIsShowModal={setIsShowModal}
-            setIdCard={setIdCard}
             advert={advert}
+            setIdCard={setIdCard}
             address={address}
           />
         );
@@ -41,19 +35,10 @@ export default function Card({ setIsShowModal, setIdCard, idCard }) {
 }
 
 function OneCard({ advert, address, setIsShowModal, setIdCard }) {
-  const advertsActive = useSelector(selectAdvertsActive);
-  const advertAct = advertsActive.find(item => item.id === advert.id);
-  const [isSwapped, setIsSwapped] = useState(advertAct ? true : false);
-
   const dispatch = useDispatch();
 
   const handleIconSwap = () => {
-    if (!advertAct) {
-      dispatch(setAdvertsActive(advert));
-    } else {
-      dispatch(deleteAdvertsActive(advert));
-    }
-    setIsSwapped(!isSwapped);
+    dispatch(deleteAdvertsActive(advert));
   };
   return (
     <CardStyle key={advert.id} style={{ position: 'relative' }}>
@@ -94,35 +79,19 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
         id={advert.id}
       />
 
-      {isSwapped || advertAct ? (
-        <svg
-          onClick={handleIconSwap}
-          style={{
-            position: 'absolute',
-            top: '14px',
-            right: '14px',
-            width: '18px',
-            height: '18px',
-            cursor: 'pointer',
-          }}
-        >
-          <use href={`${Icon}#icon-active`}></use>
-        </svg>
-      ) : (
-        <svg
-          onClick={handleIconSwap}
-          style={{
-            position: 'absolute',
-            top: '14px',
-            right: '14px',
-            width: '18px',
-            height: '18px',
-            cursor: 'pointer',
-          }}
-        >
-          <use href={`${Icon}#icon-normal`}></use>
-        </svg>
-      )}
+      <svg
+        onClick={handleIconSwap}
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+          width: '18px',
+          height: '18px',
+          cursor: 'pointer',
+        }}
+      >
+        <use href={`${Icon}#icon-active`}></use>
+      </svg>
     </CardStyle>
   );
 }

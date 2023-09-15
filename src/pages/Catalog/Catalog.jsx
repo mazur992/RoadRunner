@@ -20,7 +20,11 @@ export default function Catalog() {
   return (
     <div style={{ width: '1400px' }}>
       <CatalogStyle>
-        <Card setIsShowModal={setIsShowModal} setIdCard={setIdCard}></Card>
+        <Card
+          setIsShowModal={setIsShowModal}
+          setIdCard={setIdCard}
+          idCard={idCard}
+        ></Card>
         <LinkCatalogStyle
           onClick={() => {
             setPage(page + 1);

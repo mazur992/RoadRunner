@@ -17,7 +17,16 @@ const initialState = {
 const advertSlice = createSlice({
   name: 'advert',
   initialState,
-  reducers: {},
+  reducers: {
+    setAdvertsActive: (state, action) => {
+      state.advertsActive = [...state.advertsActive, action.payload];
+    },
+    deleteAdvertsActive: (state, action) => {
+      state.advertsActive = state.advertsActive.filter(
+        item => item.id !== action.payload.id
+      );
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -79,5 +88,5 @@ const advertSlice = createSlice({
       });
   },
 });
-// export const {} = advertSlice.actions;
+export const { setAdvertsActive, deleteAdvertsActive } = advertSlice.actions;
 export default advertSlice.reducer;

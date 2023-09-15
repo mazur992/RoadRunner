@@ -4,6 +4,7 @@ import ButtonRentalCar from 'components/ButtonRentalCar/ButtonRentalCar';
 import Icon from 'images/sprite.svg';
 import { useSelector } from 'react-redux';
 import { selectAdvert } from 'store/createSlices/advert/advertSelectors';
+import { nanoid } from '@reduxjs/toolkit';
 
 export default function Modal({ hideModal, idCard }) {
   const adverts = useSelector(selectAdvert);
@@ -68,10 +69,14 @@ export default function Modal({ hideModal, idCard }) {
         }}
       >
         {advert.accessories.map(accessory => (
-          <span className="modalDescription">{accessory}</span>
+          <span key={nanoid()} className="modalDescription">
+            {accessory}
+          </span>
         ))}
         {advert.functionalities.map(functionalities => (
-          <span className="modalDescription">{functionalities}</span>
+          <span key={nanoid()} className="modalDescription">
+            {functionalities}
+          </span>
         ))}
       </div>
       <p className="modalTitle">Rental Conditions: </p>
@@ -90,7 +95,9 @@ export default function Modal({ hideModal, idCard }) {
           </span>
         </span>
         {rentalConditions.slice(1).map(rentalCondition => (
-          <span className="rentalConditional">{rentalCondition}</span>
+          <span key={nanoid()} className="rentalConditional">
+            {rentalCondition}
+          </span>
         ))}
 
         <span className="rentalConditional">
