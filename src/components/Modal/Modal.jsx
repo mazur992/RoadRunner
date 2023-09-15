@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { ModalStyle } from './Modal.styled';
 import ButtonRentalCar from 'components/ButtonRentalCar/ButtonRentalCar';
-import {
-  FiX,
-  // FiHeart
-} from 'react-icons/fi';
+import Icon from 'images/sprite.svg';
 import { useSelector } from 'react-redux';
 import { selectAdvert } from 'store/createSlices/advert/advertSelectors';
 
@@ -106,7 +103,9 @@ export default function Modal({ hideModal, idCard }) {
         </span>
       </div>
       <ButtonRentalCar />
-      <FiX className="modalCloseIcon" onClick={() => hideModal()} />
+      <svg className="modalCloseIcon" onClick={() => hideModal()}>
+        <use href={`${Icon}#icon-close`}></use>
+      </svg>
     </ModalStyle>
   );
 }

@@ -8,6 +8,8 @@ import {
 
 const initialState = {
   adverts: [],
+  advertsActive: [],
+
   loading: false,
   error: null,
 };

@@ -6,7 +6,7 @@ export const CardStyle = styled.div`
   & .cardImg {
     min-height: 268px;
     margin-bottom: 14px;
-
+    background-color: #eee;
     border-radius: 12px;
   }
   & .cardModel {
@@ -33,5 +33,7 @@ export const CardStyle = styled.div`
   }
   & .cardDescription:not(:first-child) {
     padding-left: 4px;
+  }
+  & .icon {
   }
 `;
