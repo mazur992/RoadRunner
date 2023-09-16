@@ -9,7 +9,7 @@ import { deleteAdvertsActive } from 'store/createSlices/advert/advert';
 export default function FavoritCard({ setIsShowModal, setIdCard, idCard }) {
   const advertsActive = useSelector(selectAdvertsActive);
 
-  return (
+  return advertsActive.length ? (
     <div
       style={{
         display: 'flex',
@@ -30,6 +30,10 @@ export default function FavoritCard({ setIsShowModal, setIdCard, idCard }) {
           />
         );
       })}
+    </div>
+  ) : (
+    <div style={{ color: 'tomato', textAlign: 'center', fontSize: '45px' }}>
+      Add favorite car
     </div>
   );
 }

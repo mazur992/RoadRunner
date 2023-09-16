@@ -29,6 +29,8 @@ export const CardStyle = styled.div`
   }
   & .cardDescription:not(:last-child) {
     border-right: solid 0.5px;
+    border-color: rgba(18, 20, 23, 0.1);
+
     padding-right: 4px;
   }
   & .cardDescription:not(:first-child) {

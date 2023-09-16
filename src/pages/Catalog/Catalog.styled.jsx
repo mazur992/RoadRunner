@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CatalogStyle = styled.div`
-  padding: 150px 128px;
+  padding: 50px 128px 150px;
   text-align: center;
 `;
 export const LinkCatalogStyle = styled.a`

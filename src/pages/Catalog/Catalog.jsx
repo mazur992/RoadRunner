@@ -4,7 +4,8 @@ import Modal from 'components/Modal/Modal';
 import BackDrop from 'components/BackDrop/BackDrop';
 import { CatalogStyle, LinkCatalogStyle } from './Catalog.styled';
 import { useDispatch } from 'react-redux';
-import { getAllAdverts } from 'store/AsyncThunk/asyncThunkAdvert';
+import { allAdverts, getAllAdverts } from 'store/AsyncThunk/asyncThunkAdvert';
+import FilterForm from 'components/FilterForm/FilterForm';
 
 export default function Catalog() {
   const dispatch = useDispatch();
@@ -16,10 +17,12 @@ export default function Catalog() {
   };
   useEffect(() => {
     dispatch(getAllAdverts(page));
+    dispatch(allAdverts());
   }, [dispatch, page]);
   return (
     <div style={{ width: '1400px' }}>
       <CatalogStyle>
+        <FilterForm />
         <Card
           setIsShowModal={setIsShowModal}
           setIdCard={setIdCard}

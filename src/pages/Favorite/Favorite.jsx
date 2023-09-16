@@ -11,13 +11,15 @@ export default function Favorite() {
     setIsShowModal(false);
   };
   return (
-    <FavoriteStyle>
-      <FavoritCard setIdCard={setIdCard} setIsShowModal={setIsShowModal} />
-      {isShowModal && (
-        <BackDrop hideModal={hideModal}>
-          <Modal hideModal={hideModal} idCard={idCard} />
-        </BackDrop>
-      )}
-    </FavoriteStyle>
+    <div style={{ width: '1400px' }}>
+      <FavoriteStyle>
+        <FavoritCard setIdCard={setIdCard} setIsShowModal={setIsShowModal} />
+        {isShowModal && (
+          <BackDrop hideModal={hideModal}>
+            <Modal hideModal={hideModal} idCard={idCard} />
+          </BackDrop>
+        )}
+      </FavoriteStyle>
+    </div>
   );
 }

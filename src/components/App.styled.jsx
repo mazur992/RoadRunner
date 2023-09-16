@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const AppStyle = styled.div``;
+export const AppStyle = styled.div`
+  padding: 10px;
+`;

@@ -4,10 +4,12 @@ import {
   createAdvert,
   deleteAdvert,
   getAdvertById,
+  allAdverts,
 } from 'store/AsyncThunk/asyncThunkAdvert';
 
 const initialState = {
   adverts: [],
+  allAdverts: [],
   advertsActive: [],
 
   loading: false,
@@ -46,6 +48,19 @@ const advertSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllAdverts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      //AllAdverts===========================================================>
+      .addCase(allAdverts.pending, state => {
+        state.loading = true;
+      })
+      .addCase(allAdverts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allAdverts = action.payload;
+        state.error = null;
+      })
+      .addCase(allAdverts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

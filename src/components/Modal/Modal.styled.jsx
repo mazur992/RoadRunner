@@ -40,6 +40,8 @@ export const ModalStyle = styled.div`
   }
   & .modalDescription:not(:last-child) {
     border-right: 0.5px solid #121417;
+    border-color: rgba(18, 20, 23, 0.1);
+
     padding-right: 4px;
   }
   & .modalDescription:not(:first-child) {
