@@ -4,10 +4,7 @@ import ButtonSearch from 'components/ButtonSearch/ButtonSearch';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { object, number } from 'yup';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import {
-  selectAdvert,
-  selectAllAdvert,
-} from 'store/createSlices/advert/advertSelectors';
+import { selectAllAdvert } from 'store/createSlices/advert/advertSelectors';
 import { nanoid } from '@reduxjs/toolkit';
 
 export default function FilterForm() {
@@ -33,6 +30,7 @@ export default function FilterForm() {
   adverts.map(advert => {
     uniqueKeys.add(advert.make);
     uniqueKeysPrice.add(advert.rentalPrice);
+    return null;
   });
   const makes = [...uniqueKeys];
   const prices = [...uniqueKeysPrice];
