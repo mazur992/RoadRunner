@@ -78,6 +78,8 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
           flexWrap: 'wrap',
           gap: '4px',
           marginBottom: '28px',
+          overflow: 'hidden',
+          height: '40px',
         }}
       >
         <span className="cardDescription">{address[1]}</span>

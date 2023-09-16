@@ -2,14 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 
 import { lazy, Suspense } from 'react';
 import AppBar from './AppBar/AppBar';
-import { AppBarStyle } from './AppBar/AppBar.styled';
+import { AppStyle } from './App.styled';
 const Home = lazy(() => import('../pages/Home/Home'));
 const Catalog = lazy(() => import('../pages/Catalog/Catalog'));
 const Favorite = lazy(() => import('../pages/Favorite/Favorite'));
 
 export const App = () => {
   return (
-    <AppBarStyle>
+    <AppStyle>
       <header>
         <AppBar />
       </header>
@@ -23,6 +23,6 @@ export const App = () => {
           </Routes>
         </Suspense>
       </main>
-    </AppBarStyle>
+    </AppStyle>
   );
 };
