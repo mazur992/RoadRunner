@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.7b56041d.css",
-    "main.js": "/test/static/js/main.60a70400.js",
-    "static/js/485.274fc79b.chunk.js": "/test/static/js/485.274fc79b.chunk.js",
-    "static/js/327.d9c453ab.chunk.js": "/test/static/js/327.d9c453ab.chunk.js",
-    "static/js/837.1add62f2.chunk.js": "/test/static/js/837.1add62f2.chunk.js",
-    "static/js/568.7df0ef3c.chunk.js": "/test/static/js/568.7df0ef3c.chunk.js",
-    "static/media/sprite.svg": "/test/static/media/sprite.932ff6a3f3ed6a645343d329a3dcba1a.svg",
-    "index.html": "/test/index.html",
-    "main.7b56041d.css.map": "/test/static/css/main.7b56041d.css.map",
-    "main.60a70400.js.map": "/test/static/js/main.60a70400.js.map",
-    "485.274fc79b.chunk.js.map": "/test/static/js/485.274fc79b.chunk.js.map",
-    "327.d9c453ab.chunk.js.map": "/test/static/js/327.d9c453ab.chunk.js.map",
-    "837.1add62f2.chunk.js.map": "/test/static/js/837.1add62f2.chunk.js.map",
-    "568.7df0ef3c.chunk.js.map": "/test/static/js/568.7df0ef3c.chunk.js.map"
+    "main.css": "/RoadRunner/static/css/main.7b56041d.css",
+    "main.js": "/RoadRunner/static/js/main.bca6f94b.js",
+    "static/js/485.d81fa1a5.chunk.js": "/RoadRunner/static/js/485.d81fa1a5.chunk.js",
+    "static/css/833.a6cf07e3.chunk.css": "/RoadRunner/static/css/833.a6cf07e3.chunk.css",
+    "static/js/833.5969fc9f.chunk.js": "/RoadRunner/static/js/833.5969fc9f.chunk.js",
+    "static/js/837.9beea986.chunk.js": "/RoadRunner/static/js/837.9beea986.chunk.js",
+    "static/js/393.eb1645be.chunk.js": "/RoadRunner/static/js/393.eb1645be.chunk.js",
+    "static/media/sprite.svg": "/RoadRunner/static/media/sprite.932ff6a3f3ed6a645343d329a3dcba1a.svg",
+    "index.html": "/RoadRunner/index.html",
+    "main.7b56041d.css.map": "/RoadRunner/static/css/main.7b56041d.css.map",
+    "main.bca6f94b.js.map": "/RoadRunner/static/js/main.bca6f94b.js.map",
+    "485.d81fa1a5.chunk.js.map": "/RoadRunner/static/js/485.d81fa1a5.chunk.js.map",
+    "833.a6cf07e3.chunk.css.map": "/RoadRunner/static/css/833.a6cf07e3.chunk.css.map",
+    "833.5969fc9f.chunk.js.map": "/RoadRunner/static/js/833.5969fc9f.chunk.js.map",
+    "837.9beea986.chunk.js.map": "/RoadRunner/static/js/837.9beea986.chunk.js.map",
+    "393.eb1645be.chunk.js.map": "/RoadRunner/static/js/393.eb1645be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7b56041d.css",
-    "static/js/main.60a70400.js"
+    "static/js/main.bca6f94b.js"
   ]
 }
