@@ -65,7 +65,7 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
           marginBottom: '8px',
         }}
       >
-        <div>
+        <div style={{ height: '24px', overflow: 'hidden' }}>
           <span className="cardModel">{advert.make}</span>
           <span className="cardModel cardModelBlue">{advert.model}</span>
           <span className="cardModel">{`, ${advert.year}`}</span>
@@ -87,7 +87,7 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
         <span className="cardDescription">{advert.rentalCompany}</span>
         <span className="cardDescription">{advert.type}</span>
         <span className="cardDescription">{advert.model}</span>
-        <span className="cardDescription">{advert.mileage}</span>
+        <span className="cardDescription">{advert.id}</span>
         <span className="cardDescription">{advert.functionalities[0]}</span>
       </div>
       <ButtonLearnMore
