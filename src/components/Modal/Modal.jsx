@@ -37,7 +37,6 @@ export default function Modal({ hideModal, idCard }) {
           display: 'flex',
           flexWrap: 'wrap',
           width: '277px',
-          //   gap: '4px',
           marginBottom: '14px',
         }}
       >
@@ -109,7 +108,10 @@ export default function Modal({ hideModal, idCard }) {
           <span className="rentalConditionalValue">{advert.rentalPrice}</span>
         </span>
       </div>
-      <ButtonRentalCar />
+      <a style={{ color: '#fff', padding: '20px 50px' }} href="tel:+123456789">
+        <ButtonRentalCar />
+      </a>
+
       <svg className="modalCloseIcon" onClick={() => hideModal()}>
         <use href={`${Icon}#icon-close`}></use>
       </svg>

@@ -9,10 +9,13 @@ export const HomeStyle = styled.div`
   background-attachment: fixed;
   color: rgba(255, 255, 255, 0.8);
   & .companyName {
-    font-size: 180px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(0, 0, 0);
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 10px;
   }
 `;

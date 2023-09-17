@@ -68,9 +68,6 @@ export default function FilterForm() {
                     {price}
                   </option>
                 ))}
-
-                <option value="value2">Значение 2</option>
-                <option value="value3">Значение 3</option>
               </Field>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
