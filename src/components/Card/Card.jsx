@@ -16,7 +16,7 @@ export default function Card({ setIsShowModal, setIdCard, idCard }) {
   const adverts = useSelector(selectAdvert);
 
   return (
-    <div
+    <ul
       style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -36,7 +36,7 @@ export default function Card({ setIsShowModal, setIdCard, idCard }) {
           />
         );
       })}
-    </div>
+    </ul>
   );
 }
 
@@ -57,7 +57,18 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
   };
   return (
     <CardStyle key={advert.id} style={{ position: 'relative' }}>
-      <img className="cardImg" src={advert.img} alt={advert.make} />
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '268px',
+          marginBottom: '14px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+        }}
+      >
+        <img className="cardImg" src={advert.img} alt={advert.make} />
+      </div>
       <div
         style={{
           display: 'flex',
