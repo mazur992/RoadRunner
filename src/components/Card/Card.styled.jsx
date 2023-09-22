@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-export const CardStyle = styled.div`
+export const CardStyle = styled.li`
   width: calc((100% - 87px) / 4);
 
   & .cardImg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     min-height: 268px;
-    margin-bottom: 14px;
+    width: 401px;
+
     background-color: #eee;
-    border-radius: 12px;
   }
   & .cardModel {
     color: #121417;

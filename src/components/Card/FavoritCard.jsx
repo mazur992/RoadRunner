@@ -10,7 +10,7 @@ export default function FavoritCard({ setIsShowModal, setIdCard, idCard }) {
   const advertsActive = useSelector(selectAdvertsActive);
 
   return advertsActive.length ? (
-    <div
+    <ul
       style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -30,7 +30,7 @@ export default function FavoritCard({ setIsShowModal, setIdCard, idCard }) {
           />
         );
       })}
-    </div>
+    </ul>
   ) : (
     <div style={{ color: 'tomato', textAlign: 'center', fontSize: '45px' }}>
       Add favorite car
@@ -46,7 +46,18 @@ function OneCard({ advert, address, setIsShowModal, setIdCard }) {
   };
   return (
     <CardStyle key={advert.id} style={{ position: 'relative' }}>
-      <img className="cardImg" src={advert.img} alt={advert.make} />
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '268px',
+          marginBottom: '14px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+        }}
+      >
+        <img className="cardImg" src={advert.img} alt={advert.make} />
+      </div>
       <div
         style={{
           display: 'flex',
