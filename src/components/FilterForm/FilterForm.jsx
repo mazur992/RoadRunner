@@ -7,22 +7,16 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { selectAllAdvert } from 'store/createSlices/advert/advertSelectors';
 import { nanoid } from '@reduxjs/toolkit';
 
-export default function FilterForm() {
+export default function FilterForm({ setParams, setPage }) {
   const handleSubmit = (values, { resetForm }) => {
+    setPage(1);
+    if (!values.brand) values.brand = `${makes[0]}`;
+    if (!values.price) values.price = `${prices[0]}`;
+    setParams(values);
     console.log('values: ', values);
     resetForm();
   };
 
-  const initialValues = {
-    from: '',
-    to: '',
-    brand: '',
-    price: '',
-  };
-  const schema = object({
-    from: number().required(),
-    to: number().required(),
-  });
   const adverts = useSelector(selectAllAdvert);
   const uniqueKeys = new Set();
   const uniqueKeysPrice = new Set();
@@ -34,6 +28,16 @@ export default function FilterForm() {
   });
   const makes = [...uniqueKeys];
   const prices = [...uniqueKeysPrice];
+  const initialValues = {
+    from: '',
+    to: '',
+    brand: '',
+    price: '',
+  };
+  const schema = object({
+    from: number(),
+    to: number(),
+  });
 
   return (
     <FilterFormStyle>

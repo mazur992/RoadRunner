@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getAllAdverts,
+  getFilterAdverts,
   createAdvert,
   deleteAdvert,
   getAdvertById,
@@ -10,6 +11,7 @@ import {
 const initialState = {
   adverts: [],
   allAdverts: [],
+  filterAdverts: [],
   advertsActive: [],
 
   loading: false,
@@ -28,6 +30,9 @@ const advertSlice = createSlice({
         item => item.id !== action.payload.id
       );
     },
+    resetFilterAdverts: state => {
+      state.filterAdverts = [];
+    },
   },
 
   extraReducers: builder => {
@@ -39,15 +44,27 @@ const advertSlice = createSlice({
       .addCase(getAllAdverts.fulfilled, (state, action) => {
         state.loading = false;
         const existingIds = state.adverts.map(advert => advert.id);
-
         const newAdverts = action.payload.filter(
           advert => !existingIds.includes(advert.id)
         );
-
         state.adverts = [...state.adverts, ...newAdverts];
         state.error = null;
       })
       .addCase(getAllAdverts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      //getFilterAdverts===========================================================>
+      .addCase(getFilterAdverts.pending, state => {
+        state.loading = true;
+      })
+      .addCase(getFilterAdverts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.adverts = [];
+        state.filterAdverts = [...action.payload];
+        state.error = null;
+      })
+      .addCase(getFilterAdverts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
@@ -103,5 +120,6 @@ const advertSlice = createSlice({
       });
   },
 });
-export const { setAdvertsActive, deleteAdvertsActive } = advertSlice.actions;
+export const { setAdvertsActive, deleteAdvertsActive, resetFilterAdverts } =
+  advertSlice.actions;
 export default advertSlice.reducer;

@@ -14,6 +14,21 @@ const getAllAdverts = createAsyncThunk('advert/getAdverts', async page => {
     throw new Error('Failed get adverts');
   }
 });
+const getFilterAdverts = createAsyncThunk(
+  'advert/getFilterAdverts',
+  async params => {
+    const make = params.params.brand ? `&make=${params.params?.brand}` : '';
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/adverts/?page=${params.page}&limit=8${make}`
+      );
+      const { data } = response;
+      return data;
+    } catch (error) {
+      throw new Error('Failed get adverts');
+    }
+  }
+);
 const allAdverts = createAsyncThunk('advert/getAll', async page => {
   try {
     const response = await axios.get(`${BASE_URL}/adverts/`);
@@ -57,4 +72,11 @@ const getAdvertById = createAsyncThunk(
   }
 );
 
-export { getAllAdverts, createAdvert, deleteAdvert, getAdvertById, allAdverts };
+export {
+  getAllAdverts,
+  getFilterAdverts,
+  createAdvert,
+  deleteAdvert,
+  getAdvertById,
+  allAdverts,
+};

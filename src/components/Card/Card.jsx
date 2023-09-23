@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAdvert,
   selectAdvertsActive,
+  selectFilterAdvert,
 } from 'store/createSlices/advert/advertSelectors';
 import ButtonLearnMore from 'components/ButtonLearnMore/ButtonLearnMore';
 import Icon from 'images/sprite.svg';
@@ -14,6 +15,7 @@ import {
 
 export default function Card({ setIsShowModal, setIdCard, idCard }) {
   const adverts = useSelector(selectAdvert);
+  const filterAdverts = useSelector(selectFilterAdvert);
 
   return (
     <ul
@@ -24,18 +26,31 @@ export default function Card({ setIsShowModal, setIdCard, idCard }) {
         marginBottom: '100px',
       }}
     >
-      {adverts.map(advert => {
-        const address = advert.address.split(',');
-        return (
-          <OneCard
-            key={advert.id}
-            setIsShowModal={setIsShowModal}
-            setIdCard={setIdCard}
-            advert={advert}
-            address={address}
-          />
-        );
-      })}
+      {filterAdverts && filterAdverts.length > 0
+        ? filterAdverts.map(advert => {
+            const address = advert.address.split(',');
+            return (
+              <OneCard
+                key={advert.id}
+                setIsShowModal={setIsShowModal}
+                setIdCard={setIdCard}
+                advert={advert}
+                address={address}
+              />
+            );
+          })
+        : adverts.map(advert => {
+            const address = advert.address.split(',');
+            return (
+              <OneCard
+                key={advert.id}
+                setIsShowModal={setIsShowModal}
+                setIdCard={setIdCard}
+                advert={advert}
+                address={address}
+              />
+            );
+          })}
     </ul>
   );
 }
