@@ -27,12 +27,15 @@ export default function Catalog() {
   const hideModal = () => {
     setIsShowModal(false);
   };
+
   useEffect(() => {
     dispatch(resetFilterAdverts());
   }, [location, dispatch]);
+
   useEffect(() => {
     dispatch(allAdverts());
   }, [dispatch]);
+
   useEffect(() => {
     if (Object.keys(params).length === 0) dispatch(getAllAdverts(page));
     else dispatch(getFilterAdverts({ page, params }));

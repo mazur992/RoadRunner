@@ -23,11 +23,13 @@ export default function FilterForm({ setParams, setPage }) {
 
   adverts.map(advert => {
     uniqueKeys.add(advert.make);
-    uniqueKeysPrice.add(advert.rentalPrice);
+    uniqueKeysPrice.add(parseInt(advert.rentalPrice.slice(1)));
     return null;
   });
   const makes = [...uniqueKeys];
   const prices = [...uniqueKeysPrice];
+  const highestPrice = bigger(prices);
+  const newPrices = step(highestPrice);
   const initialValues = {
     from: '',
     to: '',
@@ -67,7 +69,7 @@ export default function FilterForm({ setParams, setPage }) {
                 Price/ 1 hour
               </label>
               <Field className="formField" as="select" id="price" name="price">
-                {prices.map(price => (
+                {newPrices.map(price => (
                   <option key={nanoid()} value={price}>
                     {price}
                   </option>
@@ -101,4 +103,28 @@ export default function FilterForm({ setParams, setPage }) {
       </Formik>
     </FilterFormStyle>
   );
+}
+function bigger(values) {
+  let bigNumber = values[0];
+  for (let i = 1; i < values.length; i += 1) {
+    if (values[i] > bigNumber) {
+      bigNumber = values[i];
+    }
+  }
+
+  return bigNumber;
+}
+function step(value) {
+  const arr = [];
+  if (value >= 10) {
+    arr.push(10);
+    let k = 20;
+    while (k <= value) {
+      arr.push(k);
+
+      k += 10;
+    }
+    if (arr[arr.length - 1] !== value) arr.push(Math.ceil(value / 10) * 10);
+  }
+  return arr;
 }

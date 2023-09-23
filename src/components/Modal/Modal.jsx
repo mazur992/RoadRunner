@@ -3,11 +3,16 @@ import { ModalStyle } from './Modal.styled';
 import ButtonRentalCar from 'components/ButtonRentalCar/ButtonRentalCar';
 import Icon from 'images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectAdvert } from 'store/createSlices/advert/advertSelectors';
+import {
+  selectAdvert,
+  selectFilterAdvert,
+} from 'store/createSlices/advert/advertSelectors';
 import { nanoid } from '@reduxjs/toolkit';
 
 export default function Modal({ hideModal, idCard }) {
   const adverts = useSelector(selectAdvert);
+  const filterAdverts = useSelector(selectFilterAdvert);
+  console.log('filterAdverts: ', filterAdverts);
   const advert = adverts.find(item => item.id === idCard);
   const address = advert.address.split(',');
   const rentalConditions = advert.rentalConditions.split('\n');
