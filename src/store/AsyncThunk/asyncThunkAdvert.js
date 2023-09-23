@@ -18,9 +18,18 @@ const getFilterAdverts = createAsyncThunk(
   'advert/getFilterAdverts',
   async params => {
     const make = params.params.brand ? `&make=${params.params?.brand}` : '';
+    const price = params.params.price
+      ? `&rentalPrice_lte=${params.params?.price}`
+      : '';
+    const mileageMin = params.params.from
+      ? `&mileage_gte=${params.params?.from}`
+      : '';
+    const mileageMax = params.params.to
+      ? `&mileage_lte=${params.params?.to}`
+      : '';
     try {
       const response = await axios.get(
-        `${BASE_URL}/adverts/?page=${params.page}&limit=8${make}`
+        `${BASE_URL}/adverts/?page=${params.page}&limit=8${make}${price}${mileageMin}${mileageMax}`
       );
       const { data } = response;
       return data;

@@ -12,10 +12,18 @@ import { nanoid } from '@reduxjs/toolkit';
 export default function Modal({ hideModal, idCard }) {
   const adverts = useSelector(selectAdvert);
   const filterAdverts = useSelector(selectFilterAdvert);
-  console.log('filterAdverts: ', filterAdverts);
-  const advert = adverts.find(item => item.id === idCard);
-  const address = advert.address.split(',');
-  const rentalConditions = advert.rentalConditions.split('\n');
+  const advert =
+    filterAdverts.length !== 0
+      ? filterAdverts.find(item => item.id === idCard)
+      : adverts.find(item => item.id === idCard);
+  const address =
+    filterAdverts.length !== 0
+      ? advert.address.split(',')
+      : advert.address.split(',');
+  const rentalConditions =
+    filterAdverts.length !== 0
+      ? advert.rentalConditions.split('\n')
+      : advert.rentalConditions.split('\n');
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.key === 'Escape') {
