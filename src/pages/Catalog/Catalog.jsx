@@ -14,13 +14,17 @@ import {
 } from 'store/AsyncThunk/asyncThunkAdvert';
 import FilterForm from 'components/FilterForm/FilterForm';
 import Loader from 'components/Loader';
-import { isLoading } from 'store/createSlices/advert/advertSelectors';
+import {
+  isLoading,
+  isShowLinkLoader,
+} from 'store/createSlices/advert/advertSelectors';
 
 export default function Catalog() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isShowModal, setIsShowModal] = useState(false);
   const isLoad = useSelector(isLoading);
+  const isShowLoader = useSelector(isShowLinkLoader);
   const [page, setPage] = useState(1);
   const [idCard, setIdCard] = useState(null);
   const [params, setParams] = useState({});
@@ -38,7 +42,9 @@ export default function Catalog() {
 
   useEffect(() => {
     if (Object.keys(params).length === 0) dispatch(getAllAdverts(page));
-    else dispatch(getFilterAdverts({ page, params }));
+    else {
+      dispatch(getFilterAdverts({ page, params }));
+    }
   }, [dispatch, page, params]);
 
   return (
@@ -54,13 +60,15 @@ export default function Catalog() {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Loader loading={isLoad} />
         </div>
-        <LinkCatalogStyle
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Load more
-        </LinkCatalogStyle>
+        {isShowLoader && (
+          <LinkCatalogStyle
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            Load more
+          </LinkCatalogStyle>
+        )}
         {isShowModal && (
           <BackDrop hideModal={hideModal}>
             <Modal hideModal={hideModal} idCard={idCard} />

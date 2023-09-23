@@ -13,6 +13,7 @@ const initialState = {
   allAdverts: [],
   filterAdverts: [],
   advertsActive: [],
+  isShowLinkLoader: false,
 
   loading: false,
   error: null,
@@ -43,6 +44,7 @@ const advertSlice = createSlice({
       })
       .addCase(getAllAdverts.fulfilled, (state, action) => {
         state.loading = false;
+        state.isShowLinkLoader = action.payload.length === 8;
         const existingIds = state.adverts.map(advert => advert.id);
         const newAdverts = action.payload.filter(
           advert => !existingIds.includes(advert.id)
@@ -60,6 +62,7 @@ const advertSlice = createSlice({
       })
       .addCase(getFilterAdverts.fulfilled, (state, action) => {
         state.loading = false;
+        state.isShowLinkLoader = action.payload.length === 8;
         state.adverts = [];
         state.filterAdverts = [...action.payload];
         state.error = null;

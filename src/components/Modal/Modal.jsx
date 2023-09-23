@@ -114,7 +114,9 @@ export default function Modal({ hideModal, idCard }) {
 
         <span className="rentalConditional">
           Mileage:{' '}
-          <span className="rentalConditionalValue">{advert.mileage}</span>
+          <span className="rentalConditionalValue">
+            {advert.mileage.toLocaleString('en-US')}
+          </span>
         </span>
         <span className="rentalConditional">
           Price:{' '}

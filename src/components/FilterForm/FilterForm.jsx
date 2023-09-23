@@ -55,7 +55,7 @@ export default function FilterForm({ setParams, setPage }) {
                 Car brand
               </label>
               <Field className="formField" as="select" id="brand" name="brand">
-                {makes.map(make => {
+                {makes.sort().map(make => {
                   return (
                     <option key={nanoid()} value={make}>
                       {make}
